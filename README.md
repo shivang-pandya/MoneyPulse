@@ -1,6 +1,6 @@
-# 💱 MoneyPulse - Your Personal Currency Companion
+# MoneyPulse - Your Personal Currency Companion
 
-![CurrencyVision Logo](static/images/favicon.png)
+![MoneyPulse Logo](website/static/images/favicon.png)
 
 **MoneyPulse** is a modern Django-based web application that allows authenticated users to:
 - Convert currencies in real-time 🌍
