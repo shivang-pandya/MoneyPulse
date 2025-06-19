@@ -1,0 +1,38 @@
+{% load static %}
+<script src="https://unpkg.com/alpinejs" defer></script>
+
+<header x-data="{ mobileMenuOpen: false }"
+        class="bg-white text-gray-900 shadow-md px-4 py-3 flex justify-between items-center font-poppins">
+
+    <!-- Left: Logo + Title -->
+    <div class="flex items-center gap-2">
+        <img src="{% static 'images/favicon.png' %}" alt="Logo" class="h-8 w-8 object-contain">
+        <h1 class="text-2xl font-bold text-purple-700">MoneyPulse</h1>
+    </div>
+
+    <!-- Right: Nav Links (Desktop) -->
+    <nav class="hidden md:flex items-center gap-6">
+        <a href="{% url 'convert_index' %}" class="hover:text-purple-700">Convert</a>
+        <a href="{% url 'live_updates' %}" class="hover:text-purple-700">Live Updates</a>
+        <a href="{% url 'news' %}" class="hover:text-purple-700">News</a>
+        <a href="{% url 'update_profile' %}" class="hover:text-purple-700">Edit Profile</a>
+        <a href="{% url 'logout_view' %}" class="text-red-600 font-semibold hover:underline">Logout</a>
+    </nav>
+
+    <!-- Hamburger (Mobile) -->
+    <div class="md:hidden">
+        <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-2xl focus:outline-none">
+            ☰
+        </button>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false"
+         class="absolute top-16 left-0 w-full bg-white p-4 shadow-md md:hidden z-50 space-y-3">
+        <a href="{% url 'convert_index' %}" class="block hover:text-purple-700">Convert</a>
+        <a href="{% url 'live_updates' %}" class="block hover:text-purple-700">Live Updates</a>
+        <a href="{% url 'news' %}" class="hover:text-purple-700">News</a>
+        <a href="{% url 'update_profile' %}" class="block hover:text-purple-700">Edit Profile</a>
+        <a href="{% url 'logout_view' %}" class="block text-red-600 hover:underline">Logout</a>
+    </div>
+</header>

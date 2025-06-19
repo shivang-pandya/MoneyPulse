@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts & Favicon -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+
+<body class="bg-gradient-to-r from-blue-100 to-purple-100 min-h-screen font-poppins flex flex-col">
+
+    {% include 'auth_navbar.html' %}
+
+    <main class="flex-grow">
+        <section class="mt-10 mb-20">
+            <div class="max-w-2xl mx-auto bg-white p-6 rounded shadow">
+                <h2 class="text-2xl font-bold text-purple-700 mb-4">Hello {{ user_name }}!</h2>
+                <p class="mb-6 text-gray-700">Email: {{ user_email }}</p>
+
+                <form method="POST" class="space-y-4">
+                    {% csrf_token %}
+                    <input type="number" name="amount" placeholder="Amount" class="w-full p-2 border rounded" required>
+
+                    <input list="currencies" name="from_currency" placeholder="From (e.g., USD)" class="w-full p-2 border rounded" required>
+                    <input list="currencies" name="to_currency" placeholder="To (e.g., INR)" class="w-full p-2 border rounded" required>
+
+                    <datalist id="currencies">
+                        <option value="USD">USD - United States Dollar</option>
+                        <option value="INR">INR - Indian Rupee</option>
+                        <option value="EUR">EUR - Euro</option>
+                        <option value="GBP">GBP - British Pound</option>
+                        <option value="JPY">JPY - Japanese Yen</option>
+                        <option value="AUD">AUD - Australian Dollar</option>
+                        <option value="CAD">CAD - Canadian Dollar</option>
+                        <option value="CHF">CHF - Swiss Franc</option>
+                        <option value="CNY">CNY - Chinese Yuan</option>
+                        <option value="NZD">NZD - New Zealand Dollar</option>
+                        <option value="AED">AED - UAE Dirham</option>
+                        <option value="SAR">SAR - Saudi Riyal</option>
+                        <option value="ZAR">ZAR - South African Rand</option>
+                        <option value="SEK">SEK - Swedish Krona</option>
+                        <option value="SGD">SGD - Singapore Dollar</option>
+                        <option value="HKD">HKD - Hong Kong Dollar</option>
+                        <option value="THB">THB - Thai Baht</option>
+                        <option value="KRW">KRW - South Korean Won</option>
+                        <option value="MXN">MXN - Mexican Peso</option>
+                        <option value="BRL">BRL - Brazilian Real</option>
+                    </datalist>
+
+                    <button type="submit" class="w-full bg-purple-600 text-white p-2 rounded hover:bg-purple-700 transition">
+                        Convert
+                    </button>
+                </form>
+
+                {% if conversion_result %}
+                    <p class="mt-4 text-xl text-center font-semibold text-green-700">{{ conversion_result }}</p>
+                {% endif %}
+
+                {% if error_message %}
+                    <p class="mt-4 text-red-600 text-center">{{ error_message }}</p>
+                {% endif %}
+
+            </div>
+            
+        </section>  
+        
+    </main>
+    
+    {% include 'footer.html' %}
+</body>
+</html>
