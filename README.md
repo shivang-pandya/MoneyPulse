@@ -28,7 +28,7 @@
 | Stack       | Tools/Frameworks |
 |-------------|------------------|
 | Backend     | Django (Python)  |
-| Frontend    | HTML, Tailwind CSS, Jinja2, AlpineJS |
+| Frontend    | HTML5, Tailwind CSS, Jinja2, AlpineJS |
 | APIs        | [ExchangeRate-API](https://www.exchangerate-api.com/), [GNews](https://gnews.io/) |
 | Auth        | Django Sessions  |
 
