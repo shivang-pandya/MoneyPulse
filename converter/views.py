@@ -80,19 +80,20 @@ def update_profile(request):
     user = Members.objects.get(email=user_email)
 
     if request.method == 'POST':
-        new_email = request.POST.get('email')
         new_name = request.POST.get('uname')
-        new_pass = request.POST.get('passwd')
+        new_email = request.POST.get('email')
+        new_password = request.POST.get('passwd')
 
-        # Update fields
-        user.email = new_email
         user.uname = new_name
-        user.passwd = new_pass
+        user.email = new_email
+
+        if new_password:
+            user.passwd = new_password
+
         user.save()
 
-        # Update session data
-        request.session['user_email'] = new_email
         request.session['user_name'] = new_name
+        request.session['user_email'] = new_email
 
         messages.success(request, "Profile updated successfully!")
         return redirect('update_profile')
