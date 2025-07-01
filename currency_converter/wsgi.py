@@ -16,4 +16,3 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'currency_converter.settings')
 
 application = get_wsgi_application()
 
-app = application
