@@ -1,7 +1,6 @@
 .venv
-**/__pycache__/
-**/__init__.py
-**/*.py[cod]
-**/migrations/
-**/static/
-db.sqlite3
+*/*/__pycache__
+*/*/__init__.py
+*/*/*.py[cod]
+*/*/migrations/
+/db.sqlite3
