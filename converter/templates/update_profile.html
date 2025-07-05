@@ -50,7 +50,6 @@
                   </div>
             {% endif %}
 
-        <!-- Nickname (Editable on click) -->
         <div class="relative">
           <label class="block text-sm mb-1 text-gray-700">Nickname</label>
           <input type="text" name="uname" :readonly="!editFields" value="{{ user.uname }}"
@@ -61,7 +60,6 @@
           </button>
         </div>
 
-        <!-- Email (Editable on click) -->
         <div class="relative">
           <label class="block text-sm mb-1 text-gray-700">Email</label>
           <input type="email" name="email" :readonly="!editFields" value="{{ user.email }}"
@@ -72,7 +70,6 @@
           </button>
         </div>
 
-        <!-- Password (Hidden until edit) -->
         <div class="relative" x-show="editPassword" x-transition>
           <label class="block text-sm mb-1 text-gray-700">New Password</label>
           <input type="password" name="passwd" maxlength="8" 
@@ -85,7 +82,7 @@
           </button>
         </div>
 
-        <!-- Submit / Cancel -->
+        
         <div class="flex justify-end gap-3 mt-6">
           <a href="{% url 'convert_index' %}" class="px-4 py-2 border border-gray-400 rounded hover:bg-gray-100">Cancel</a>
           <button type="submit" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">Save</button>

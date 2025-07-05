@@ -10,8 +10,8 @@ from gnews import GNews  # Google News API wrapper
 @csrf_exempt
 def convert_index(request):
     if not request.session.get('user_email'):
-        return redirect('login')  # Only allow access if user is logged in
-
+        return redirect('login')  
+        
     user_email = request.session.get('user_email')
     user_name = request.session.get('user_name')
 
